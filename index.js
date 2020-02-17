@@ -4,13 +4,13 @@ class Slider {
     this.currentSlide = 0;
     this.slides = this.sliderElement.children;
     this.slidersLength = this.slides.length;
-    
+
+
     this.addControls();
     this.addDots();
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
-
 
   addDots() {
     const divForDots = document.createElement('div');
