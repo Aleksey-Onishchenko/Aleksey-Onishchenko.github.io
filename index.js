@@ -1,13 +1,10 @@
 class Slider {
   constructor(id) {
-
     this.sliderElement = document.getElementById(id);
-    this.slidesElements = document.querySelectorAll('#slider img');
-
     this.currentSlide = 0;
-    this.slidersLength = this.slidesElements.length;
     this.slides = this.sliderElement.children;
-
+    this.slidersLength = this.slides.length;
+    
     this.addControls();
     this.addDots();
     this.addActiveClassForSlides();
