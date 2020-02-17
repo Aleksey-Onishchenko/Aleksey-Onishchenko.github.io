@@ -1,0 +1,76 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+body #slider {
+  width: 800px;
+  height: 350px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+}
+body .go_next,
+body .go_back {
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  border-radius: 50%;
+  background-color: #50514F;
+  width: 36px;
+  height: 36px;
+  margin-left: 10px;
+  font-size: 48px;
+  color: #b9c1bd;
+  border-color: inherit;
+  outline: none;
+  cursor: pointer;
+}
+body .go_next:hover,
+body .go_back:hover {
+  opacity: 0.7;
+}
+body .go_next {
+  right: 0;
+  margin-right: 10px;
+}
+body .go_back {
+  left: 0;
+}
+body .dot {
+  background: #666;
+  border-radius: 50%;
+  width: 5px;
+  height: 15px;
+  margin: 0 5px;
+  outline: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+body .dot:hover {
+  background-color: black;
+}
+body .dots {
+  text-align: center;
+  margin-top: 20px;
+}
+body .img {
+  width: 800px;
+  height: 300px;
+  position: absolute;
+  transition: all ease 1s;
+  opacity: 1;
+}
+body .cards {
+  width: 800px;
+  height: 300px;
+  display: none;
+}
+body .img_opacity {
+  opacity: 0;
+}
+body .active {
+  background: black;
+  display: inline-block;
+}
+
+/*# sourceMappingURL=/styles.611fdbeb.css.map */
