@@ -10,6 +10,7 @@ class Slider {
       this.addDots();
       this.addActiveClassForSlides();
       this.addActiveClassForDots();
+      this.swipeElements();
     }
   }
 
@@ -82,11 +83,36 @@ class Slider {
     this.dots[this.currentSlide].classList.add('active');
   }
 
+
   addActiveClassForSlides() {
     for (let i = 0; i < this.slidersLength; i += 1) {
       this.slides[i].classList.remove('active');
     }
     this.slides[this.currentSlide].classList.add('active');
+  }
+
+  swipeElements() {
+    this.touchstartX = 0;
+    this.touchendX = 0;
+    this.sliderElement.addEventListener('touchstart', (event) => {
+      this.touchstartX = event.changedTouches[0].screenX;
+    }, false);
+
+    this.sliderElement.addEventListener('touchend', (event) => {
+      this.touchendX = event.changedTouches[0].screenX;
+      this.handleGesture();
+    }, false);
+  }
+
+  handleGesture() {
+    if (this.touchendX <= this.touchstartX) {
+      console.log('Swipe left');
+      this.goNext();
+    }
+    if (this.touchendX >= this.touchstartX) {
+      console.log('Swipe right');
+      this.goBack();
+    }
   }
 }
 
