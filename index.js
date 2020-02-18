@@ -5,11 +5,12 @@ class Slider {
     this.slides = this.sliderElement.children;
     this.slidersLength = this.slides.length;
 
-
-    this.addControls();
-    this.addDots();
-    this.addActiveClassForSlides();
-    this.addActiveClassForDots();
+    if (this.slidersLength !== 0) {
+      this.addControls();
+      this.addDots();
+      this.addActiveClassForSlides();
+      this.addActiveClassForDots();
+    }
   }
 
   addDots() {
@@ -22,25 +23,20 @@ class Slider {
       divForDots.append(dot);
     }
     this.dots = divForDots.children;
-
     this.addEventsForDots();
   }
 
   addControls() {
-    if (this.slidersLength !== 0) {
-      this.nextImg = document.createElement('button');
-      this.prevImg = document.createElement('button');
-      this.nextImg.className = 'go_next';
-      this.prevImg.className = 'go_back';
-      this.prevImg.innerHTML = '&#706';
-      this.nextImg.innerHTML = '&#707';
-      this.sliderElement.append(this.prevImg);
-      this.sliderElement.append(this.nextImg);
-      this.addEventsForControls();
-    }
-    return null;
+    this.nextImg = document.createElement('button');
+    this.prevImg = document.createElement('button');
+    this.nextImg.className = 'go_next';
+    this.prevImg.className = 'go_back';
+    this.prevImg.innerHTML = '&#706';
+    this.nextImg.innerHTML = '&#707';
+    this.sliderElement.append(this.prevImg);
+    this.sliderElement.append(this.nextImg);
+    this.addEventsForControls();
   }
-
 
   goBack() {
     if (this.currentSlide === 0) {
@@ -48,7 +44,6 @@ class Slider {
     } else {
       this.currentSlide -= 1;
     }
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
@@ -59,15 +54,12 @@ class Slider {
     } else {
       this.currentSlide += 1;
     }
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
 
-
   goTo(number) {
     this.currentSlide = number;
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
@@ -87,9 +79,7 @@ class Slider {
     for (let i = 0; i < this.slidersLength; i += 1) {
       this.dots[i].classList.remove('active');
     }
-    if (this.slidersLength !== 0) {
-      this.dots[this.currentSlide].classList.add('active');
-    } return null;
+    this.dots[this.currentSlide].classList.add('active');
   }
 
   addActiveClassForSlides() {
