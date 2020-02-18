@@ -100,10 +100,10 @@ class Slider {
 
     this.sliderElement.addEventListener('touchend', (event) => {
       touchendX = event.changedTouches[0].screenX;
-      if (touchstartX > 200 && touchendX <= touchstartX) {
+      if (touchendX <= touchstartX - 50) {
         this.goNext();
       }
-      if (touchstartX > 200 && touchendX >= touchstartX) {
+      if (touchendX >= touchstartX + 50) {
         this.goBack();
       }
     }, false);
