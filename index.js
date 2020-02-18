@@ -10,7 +10,7 @@ class Slider {
       this.addDots();
       this.addActiveClassForSlides();
       this.addActiveClassForDots();
-      this.swipeElements();
+      this.addEventsSwipeForSlider();
     }
   }
 
@@ -91,28 +91,22 @@ class Slider {
     this.slides[this.currentSlide].classList.add('active');
   }
 
-  swipeElements() {
-    this.touchstartX = 0;
-    this.touchendX = 0;
+  addEventsSwipeForSlider() {
+    let touchstartX = 0;
+    let touchendX = 0;
     this.sliderElement.addEventListener('touchstart', (event) => {
-      this.touchstartX = event.changedTouches[0].screenX;
+      touchstartX = event.changedTouches[0].screenX;
     }, false);
 
     this.sliderElement.addEventListener('touchend', (event) => {
-      this.touchendX = event.changedTouches[0].screenX;
-      this.handleGesture();
+      touchendX = event.changedTouches[0].screenX;
+      if (touchendX <= touchstartX + 50) {
+        this.goNext();
+      }
+      if (touchendX >= touchstartX + 50) {
+        this.goBack();
+      }
     }, false);
-  }
-
-  handleGesture() {
-    if (this.touchendX <= this.touchstartX) {
-      console.log('Swipe left');
-      this.goNext();
-    }
-    if (this.touchendX >= this.touchstartX) {
-      console.log('Swipe right');
-      this.goBack();
-    }
   }
 }
 
