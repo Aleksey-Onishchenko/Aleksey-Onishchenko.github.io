@@ -2,15 +2,16 @@ class Slider {
   constructor(id) {
     this.sliderElement = document.getElementById(id);
     this.currentSlide = 0;
-    this.slidersLength = 3;
     this.slides = this.sliderElement.children;
+    this.slidersLength = this.slides.length;
 
-    this.addControls();
-    this.addDots();
-    this.addActiveClassForSlides();
-    this.addActiveClassForDots();
+    if (this.slidersLength !== 0) {
+      this.addControls();
+      this.addDots();
+      this.addActiveClassForSlides();
+      this.addActiveClassForDots();
+    }
   }
-
 
   addDots() {
     const divForDots = document.createElement('div');
@@ -22,7 +23,6 @@ class Slider {
       divForDots.append(dot);
     }
     this.dots = divForDots.children;
-
     this.addEventsForDots();
   }
 
@@ -35,10 +35,8 @@ class Slider {
     this.nextImg.innerHTML = '&#707';
     this.sliderElement.append(this.prevImg);
     this.sliderElement.append(this.nextImg);
-
     this.addEventsForControls();
   }
-
 
   goBack() {
     if (this.currentSlide === 0) {
@@ -46,7 +44,6 @@ class Slider {
     } else {
       this.currentSlide -= 1;
     }
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
@@ -57,15 +54,12 @@ class Slider {
     } else {
       this.currentSlide += 1;
     }
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
 
-
   goTo(number) {
     this.currentSlide = number;
-
     this.addActiveClassForSlides();
     this.addActiveClassForDots();
   }
@@ -80,7 +74,6 @@ class Slider {
     this.nextImg.addEventListener('click', this.goNext.bind(this));
     this.prevImg.addEventListener('click', this.goBack.bind(this));
   }
-
 
   addActiveClassForDots() {
     for (let i = 0; i < this.slidersLength; i += 1) {
